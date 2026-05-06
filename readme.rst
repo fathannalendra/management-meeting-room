@@ -1,71 +1,60 @@
-###################
-What is CodeIgniter
-###################
+# Meeting Room Management App
 
-CodeIgniter is an Application Development Framework - a toolkit - for people
-who build web sites using PHP. Its goal is to enable you to develop projects
-much faster than you could if you were writing code from scratch, by providing
-a rich set of libraries for commonly needed tasks, as well as a simple
-interface and logical structure to access these libraries. CodeIgniter lets
-you creatively focus on your project by minimizing the amount of code needed
-for a given task.
+Aplikasi sederhana untuk manajemen pemesanan ruang meeting berbasis web.
 
-*******************
-Release Information
-*******************
+Project ini dibuatdengan fokus pada penyelesaian masalah, struktur kode yang rapi, validasi jadwal, dan fitur pendukung untuk memudahkan pengecekan ketersediaan ruangan.
 
-This repo contains in-development code for future releases. To download the
-latest stable release please visit the `CodeIgniter Downloads
-<https://codeigniter.com/download>`_ page.
+---
 
-**************************
-Changelog and New Features
-**************************
+## Tech Stack
 
-You can find a list of all changes for each release in the `user
-guide change log <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/changelog.rst>`_.
+- PHP
+- CodeIgniter 3
+- MySQL / MariaDB
+- Bootstrap 5
+- DataTables
+- jQuery
 
-*******************
-Server Requirements
-*******************
+---
 
-PHP version 5.6 or newer is recommended.
+## Features
 
-It should work on 5.3.7 as well, but we strongly advise you NOT to run
-such old versions of PHP, because of potential security and performance
-issues, as well as missing features.
+### 1. Booking Meeting Room
+User dapat membuat booking ruang meeting dengan mengisi:
+- Ruangan
+- Nama pemesan
+- Tanggal meeting
+- Jam mulai
+- Jam selesai
+- Agenda meeting
 
-************
-Installation
-************
+### 2. Setiap ruangan memiliki informasi:
+- Nama ruangan
+- Kapasitas ruangan
+- Fasilitas ruangan
 
-Please see the `installation section <https://codeigniter.com/userguide3/installation/index.html>`_
-of the CodeIgniter User Guide.
+### 3. User dapat mengecek apakah ruangan tersedia pada tanggal dan jam tertentu sebelum melakukan booking.
 
-*******
-License
-*******
+### 4. Sistem akan menolak booking jika jadwal bentrok dengan booking lain pada ruangan yang sama.
 
-Please see the `license
-agreement <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/license.rst>`_.
+Contoh:
+- Booking lama: 10:00 - 11:00
+- Booking baru: 10:30 - 11:30
 
-*********
-Resources
-*********
+Maka sistem akan menolak booking baru karena jadwal sama.
 
--  `User Guide <https://codeigniter.com/docs>`_
--  `Contributing Guide <https://github.com/bcit-ci/CodeIgniter/blob/develop/contributing.md>`_
--  `Language File Translations <https://github.com/bcit-ci/codeigniter3-translations>`_
--  `Community Forums <http://forum.codeigniter.com/>`_
--  `Community Wiki <https://github.com/bcit-ci/CodeIgniter/wiki>`_
--  `Community Slack Channel <https://codeigniterchat.slack.com>`_
+### 5. Aplikasi menampilkan meeting yang sedang berlangsung pada hari ini berdasarkan waktu saat ini.
 
-Report security issues to our `Security Panel <mailto:security@codeigniter.com>`_
-or via our `page on HackerOne <https://hackerone.com/codeigniter>`_, thank you.
+### 6. User dapat mengubah data booking selama meeting belum dimulai.
 
-***************
-Acknowledgement
-***************
+### 7.Booking tidak dapat diedit jika jadwal meeting sudah dimulai atau sudah lewat.
 
-The CodeIgniter team would like to thank EllisLab, all the
-contributors to the CodeIgniter project and you, the CodeIgniter user.
+### 8. Data booking tidak dihapus permanen dari database. Sistem hanya mengubah status `is_delete` menjadi `1`.
+Tujuannya agar data historis tetap tersimpan untuk kebutuhan audit atau tracking.
+
+### 9. DataTables Integration
+List booking menggunakan DataTables sehingga mendukung:
+- Search
+- Pagination
+- Sorting
+- Show entries
