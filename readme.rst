@@ -6,8 +6,7 @@ Project ini dibuatdengan fokus pada penyelesaian masalah, struktur kode yang rap
 
 ---
 
-1. Tech Stack
-
+1.Tech Stack
 - PHP
 - CodeIgniter 3
 - MySQL / MariaDB
